@@ -5,9 +5,27 @@ end
 
 local actions = require "telescope.actions"
 
+local action_utils = require("telescope.actions.utils")
+local action_state = require("telescope.actions.state")
+
+local function single_or_multi_select(prompt_bufnr)
+  local current_picker = action_state.get_current_picker(prompt_bufnr)
+  local has_multi_selection = (next(current_picker:get_multi_selection()) ~= nil)
+
+  if (has_multi_selection) then
+    -- apply function to each selection
+    action_utils.map_selections(prompt_bufnr, function(selection)
+      local filename = selection[1]
+      vim.cmd(':edit! ' .. filename)
+    end)
+  else
+    -- if does not have multi selection, open single file
+    actions.file_edit(prompt_bufnr)
+  end
+end
+
 telescope.setup {
   defaults = {
-
     prompt_prefix = "> ",
     selection_caret = "> ",
     path_display = {
@@ -16,21 +34,22 @@ telescope.setup {
         exclude = { 1, -1, -2, -3 }
       }
     },
-
     mappings = {
       i = {
+        -- History keymap
         ["<C-n>"] = actions.cycle_history_next,
         ["<C-p>"] = actions.cycle_history_prev,
-
+        -- Selection movement keymap
         ["<C-j>"] = actions.move_selection_next,
         ["<C-k>"] = actions.move_selection_previous,
-
-        ["<esc>"] = actions.close,
-
         ["<Down>"] = actions.move_selection_next,
         ["<Up>"] = actions.move_selection_previous,
+        -- Window keymap
+        ["<esc>"] = actions.close,
+        ["<C-q>"] = actions.send_to_qflist + actions.open_qflist,
 
-        ["<CR>"] = actions.select_default,
+        ["<CR>"] = single_or_multi_select,
+        -- NOTE: Huh?
         ["<C-x>"] = actions.select_horizontal,
         ["<C-v>"] = actions.select_vertical,
         ["<C-t>"] = actions.select_tab,
@@ -43,12 +62,10 @@ telescope.setup {
 
         ["<Tab>"] = actions.toggle_selection + actions.move_selection_worse,
         ["<S-Tab>"] = actions.toggle_selection + actions.move_selection_better,
-        ["<C-q>"] = actions.send_to_qflist + actions.open_qflist,
         ["<M-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
         ["<C-l>"] = actions.complete_tag,
         ["<C-_>"] = actions.which_key, -- keys from pressing <C-/>
       },
-
       n = {
         ["<esc>"] = actions.close,
         ["<CR>"] = actions.select_default,
