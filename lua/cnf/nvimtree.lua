@@ -5,71 +5,6 @@ if not status_ok then
   return
 end
 
-local config_status_ok, nvim_tree_config = pcall(require, "nvim-tree.config")
-if not config_status_ok then
-  return
-end
-
-local tree_cb = nvim_tree_config.nvim_tree_callback
-
-nvim_tree.setup {
-  disable_netrw = true,
-  hijack_netrw = true,
-  hijack_cursor = false,
-  sync_root_with_cwd = true,
-  diagnostics = {
-    enable = true,
-    icons = {
-      hint = "",
-      info = "",
-      warning = "",
-      error = "",
-    },
-  },
-  update_focused_file = {
-    enable = true,
-    update_root = false,
-    ignore_list = {},
-  },
-  git = {
-    enable = true,
-    ignore = false,
-    timeout = 500,
-  },
-  view = {
-    width = 30,
-    hide_root_folder = false,
-    side = "left",
-    number = false,
-    relativenumber = true,
-  },
-  renderer = {
-    icons = {
-      glyphs = {
-        default = "",
-        symlink = "",
-        git = {
-          unstaged = "",
-          staged = "S",
-          unmerged = "",
-          renamed = "➜",
-          deleted = "",
-          untracked = "U",
-          ignored = "◌",
-        },
-        folder = {
-          default = "",
-          open = "",
-          empty = "",
-          empty_open = "",
-          symlink = "",
-        },
-      }
-    }
-  }
-}
-
---
 -- This function has been generated from your
 --   view.mappings.list
 --   view.mappings.custom_only
@@ -85,18 +20,13 @@ nvim_tree.setup {
 --
 -- Please see https://github.com/nvim-tree/nvim-tree.lua/wiki/Migrating-To-on_attach for assistance in migrating.
 --
-
-local function on_attach(bufnr)
+local function my_on_attach(bufnr)
   local api = require('nvim-tree.api')
 
   local function opts(desc)
     return { desc = 'nvim-tree: ' .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
   end
 
-
-  -- Default mappings. Feel free to modify or remove as you wish.
-  --
-  -- BEGIN_DEFAULT_ON_ATTACH
   vim.keymap.set('n', '<C-]>', api.tree.change_root_to_node,          opts('CD'))
   vim.keymap.set('n', '<C-e>', api.node.open.replace_tree_buffer,     opts('Open: In Place'))
   vim.keymap.set('n', '<C-k>', api.node.show_info_popup,              opts('Info'))
@@ -149,19 +79,69 @@ local function on_attach(bufnr)
   vim.keymap.set('n', 'Y',     api.fs.copy.relative_path,             opts('Copy Relative Path'))
   vim.keymap.set('n', '<2-LeftMouse>',  api.node.open.edit,           opts('Open'))
   vim.keymap.set('n', '<2-RightMouse>', api.tree.change_root_to_node, opts('CD'))
-  -- END_DEFAULT_ON_ATTACH
 
-
-  -- Mappings migrated from view.mappings.list
-  --
-  -- You will need to insert "your code goes here" for any mappings with a custom action_cb
   vim.keymap.set('n', 'l', api.node.open.edit, opts('Open'))
-  vim.keymap.set('n', '<CR>', api.node.open.edit, opts('Open'))
-  vim.keymap.set('n', 'o', api.node.open.edit, opts('Open'))
   vim.keymap.set('n', 'h', api.node.navigate.parent_close, opts('Close Directory'))
   vim.keymap.set('n', 'v', api.node.open.vertical, opts('Open: Vertical Split'))
-
 end
+
+nvim_tree.setup {
+  disable_netrw = true,
+  hijack_netrw = true,
+  hijack_cursor = false,
+  sync_root_with_cwd = true,
+  diagnostics = {
+    enable = true,
+    icons = {
+      hint = "",
+      info = "",
+      warning = "",
+      error = "",
+    },
+  },
+  update_focused_file = {
+    enable = true,
+    update_root = false,
+    ignore_list = {},
+  },
+  git = {
+    enable = true,
+    ignore = false,
+    timeout = 500,
+  },
+  on_attach = my_on_attach,
+  view = {
+    width = 30,
+    hide_root_folder = false,
+    side = "left",
+    number = false,
+    relativenumber = true,
+  },
+  renderer = {
+    icons = {
+      glyphs = {
+        default = "",
+        symlink = "",
+        git = {
+          unstaged = "",
+          staged = "S",
+          unmerged = "",
+          renamed = "➜",
+          deleted = "",
+          untracked = "U",
+          ignored = "◌",
+        },
+        folder = {
+          default = "",
+          open = "",
+          empty = "",
+          empty_open = "",
+          symlink = "",
+        },
+      }
+    }
+  }
+}
 
 local keymap = vim.keymap.set
 keymap("n", "<leader>e", ":NvimTreeToggle<cr>", { desc = 'NvimTree toggle', noremap = true, silent = true })

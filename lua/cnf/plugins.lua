@@ -48,7 +48,7 @@ return packer.startup(function(use)
   use("numToStr/Comment.nvim")                        -- Commenting shortcuts
 	use("JoosepAlviste/nvim-ts-context-commentstring")  --
   use("kyazdani42/nvim-web-devicons")                 --
-  use("kyazdani42/nvim-tree.lua")                     --
+  use("nvim-tree/nvim-tree.lua")                      -- Plugin for displaying FS tree
   use("akinsho/bufferline.nvim")                      -- Bufferline plugin for displaying opened buffers
   use("moll/vim-bbye")                                --
   use("lukas-reineke/indent-blankline.nvim")          -- Indentation lines
