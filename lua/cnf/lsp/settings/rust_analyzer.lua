@@ -1,10 +1,11 @@
 return {
   settings = {
-    rust_analyzer = {
+    ['rust-analyzer'] = {
       cargo = {
         buildScripts = {
           enabled = true
         },
+        features = "all"
       },
       files = {
         excludeDirs = {

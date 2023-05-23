@@ -85,9 +85,9 @@ return packer.startup(function(use)
   use("rafamadriz/friendly-snippets") -- a bunch of snippets to use
 
   -- LSP
-  use("neovim/nvim-lspconfig")           -- enables LSP
-  use("williamboman/mason.nvim")         -- enables LSP
-  use("williamboman/mason-lspconfig.nvim")
+  use("williamboman/mason.nvim")           -- enables LSP
+  use("williamboman/mason-lspconfig.nvim") --
+  use("neovim/nvim-lspconfig")             -- enables LSP
   use({
     "jose-elias-alvarez/null-ls.nvim",
     requires = "nvim-lua/plenary.nvim"

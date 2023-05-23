@@ -12,19 +12,6 @@ end
 
 local lspconfig = require("lspconfig")
 
-
-mason_lsp.setup({
-  ensure_installed = {
-    "lua_ls",
-    "bashls",
-    "rust_analyzer",
-    "taplo",
-    "clangd",
-    "marksman",
-    "jdtls",
-  }
-})
-
 local handler_setup = {
   function(server_name)
     local opts = {
@@ -38,11 +25,11 @@ local handler_setup = {
 
 local custom_confs = {
   "clangd",
+  "rust_analyzer",
   "intelephense",
   "jdtls",
   "jsonls",
   "pyright",
-  "rust_analyzer",
   "lua_ls",
   "tailwindcss",
 }
@@ -62,4 +49,16 @@ for _, server in pairs(custom_confs ) do
   end
 end
 
-mason_lsp.setup_handlers(handler_setup)
+mason_lsp.setup({
+  ensure_installed = {
+    "lua_ls",
+    "bashls",
+    "rust_analyzer",
+    "taplo",
+    "clangd",
+    "marksman",
+    "jdtls",
+  },
+
+  handlers = handler_setup,
+})
