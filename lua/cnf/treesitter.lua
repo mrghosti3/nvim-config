@@ -9,7 +9,21 @@ configs.setup {
   ignore_install = { "haskell" }, -- List of parsers to ignore installing
   highlight = {
     enable = true, -- false will disable the whole extension
-    disable = { "" }, -- list of language that will be disabled
+    disable = function (_lang, buf)
+      --[[ local disabled_langs = { "lua" } ]]
+      local max_file_size = 100 * 1024 -- 100 KB
+
+      local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
+      if ok and stats and stats.size > max_file_size then
+        return true
+      end
+
+      --[[ for _i, val  in ipairs(disabled_langs) do ]]
+      --[[   if val == lang then ]]
+      --[[     return true ]]
+      --[[   end ]]
+      --[[ end ]]
+    end,
     additional_vim_regex_highlighting = true,
   },
   indent = { enable = true, disable = { "yaml" } },
