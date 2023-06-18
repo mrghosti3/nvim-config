@@ -47,7 +47,7 @@ return packer.startup(function(use)
   use("kylechui/nvim-surround")                       -- Shortcuts for surrounding text with () {} [] "" ''
   use("numToStr/Comment.nvim")                        -- Commenting shortcuts
 	use("JoosepAlviste/nvim-ts-context-commentstring")  --
-  use("kyazdani42/nvim-web-devicons")                 --
+  use("nvim-tree/nvim-web-devicons")                  --
   use("nvim-tree/nvim-tree.lua")                      -- Plugin for displaying FS tree
   use("akinsho/bufferline.nvim")                      -- Bufferline plugin for displaying opened buffers
   use("moll/vim-bbye")                                --
@@ -62,32 +62,33 @@ return packer.startup(function(use)
     "folke/trouble.nvim",
     requires = "kyazdani42/nvim-web-devicons",
   }
-  use('nmac427/guess-indent.nvim')
+  use("nmac427/guess-indent.nvim")
   use("simrat39/symbols-outline.nvim")
-  use('lewis6991/impatient.nvim')
-
 
   -- Colorschemes
   use({ "catppuccin/nvim", as = "catppuccin" })
-  use({ "NvChad/nvim-colorizer.lua", as = "colorizer" })
+  use({ "NvChad/nvim-colorizer.lua", as = "colorizer", commit = '125e4995b86a94405aaf40191738f4b6fcd8ed57' })
 
   -- cmp plugins
   use("hrsh7th/nvim-cmp")         -- completion plugin
   use("hrsh7th/cmp-buffer")       -- buffer completions
   use("hrsh7th/cmp-path")         -- path completions
   use("hrsh7th/cmp-cmdline")      -- cmdline completions
+  use("hrsh7th/cmp-nvim-lsp")     -- nvim-cmp integration with built-in LSP
+  use("hrsh7th/cmp-nvim-lua")     -- nvim-cmp source for neovim lua API
   use("saadparwaiz1/cmp_luasnip") -- snippet completions
-  use("hrsh7th/cmp-nvim-lsp")     --
-  use("hrsh7th/cmp-nvim-lua")     --
 
   -- snippets
-  use("L3MON4D3/LuaSnip")             -- snippet engine
+  use({
+    "L3MON4D3/LuaSnip",
+    dependencies = { "rafamadriz/friendly-snippets" },
+  })                                  -- snippet engine
   use("rafamadriz/friendly-snippets") -- a bunch of snippets to use
 
   -- LSP
   use("williamboman/mason.nvim")           -- enables LSP
-  use("williamboman/mason-lspconfig.nvim") --
-  use("neovim/nvim-lspconfig")             -- enables LSP
+  use("williamboman/mason-lspconfig.nvim") -- mason.nvim integration with nvim-lspconfig
+  use("neovim/nvim-lspconfig")             -- lua integration with native LSP
   use({
     "jose-elias-alvarez/null-ls.nvim",
     requires = "nvim-lua/plenary.nvim"
@@ -98,10 +99,10 @@ return packer.startup(function(use)
 
   -- Treesitter
   use("nvim-treesitter/nvim-treesitter")
-  use("mrjones2014/nvim-ts-rainbow")
+  use("HiPhish/nvim-ts-rainbow2")
+  use("RRethy/vim-illuminate")
 
   use("lewis6991/gitsigns.nvim") -- Commands and integration for Git
-  use("RRethy/vim-illuminate")
 
   if PACKER_BOOTSTRAP then
     require("packer").sync()
