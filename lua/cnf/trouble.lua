@@ -54,5 +54,7 @@ trouble.setup({
 -- TROUBLE KEYMAPS
 local opts = { noremap = true, silent = true }
 local keymap = vim.keymap.set
-keymap("n", "<leader>t", ":TroubleToggle workspace_diagnostics<cr>", opts)
-keymap("n", "<leader>r", ":TroubleToggle todo<cr>", opts)
+keymap("n", "<leader>xx", ":TroubleToggle workspace_diagnostics<cr>", opts)
+keymap("n", "<leader>xd", ":TroubleToggle document_diagnostics<cr>", opts)
+keymap("n", "<leader>xw", ":TroubleToggle todo<cr>", opts)
+keymap("n", "<leader>xc", ":TroubleClose<cr>", opts)
