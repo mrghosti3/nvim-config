@@ -11,5 +11,6 @@ null_ls.setup({
   sources = {
     fmt.stylua.with({ extra_args = { "--config-path", "~/.config/stylua.toml" } }),
     fmt.rustfmt,
+    fmt.clang_format,
   },
 })

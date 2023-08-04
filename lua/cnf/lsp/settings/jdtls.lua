@@ -1,4 +1,5 @@
 return {
+  autostart = false,
   settings = {
     java = {
       codeGeneration = {
@@ -11,6 +12,9 @@ return {
             path = "/usr/lib/jvm/java-17-openjdk/"
           }
         }
+      },
+      format = {
+        enabled = false,
       },
       import = {
         exclusions = {
