@@ -9,7 +9,7 @@ return {
         runtimes = {
           {
             name = "JavaSE-17",
-            path = "/usr/lib/jvm/java-17-openjdk/"
+            path = "/usr/lib64/jvm/java-17-openjdk-17/"
           }
         }
       },
