@@ -1,4 +1,5 @@
 require("cnf.options")
+require("cnf.keymaps")
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
@@ -22,5 +23,4 @@ end
 
 lazy.setup('plugins')
 
-require("cnf.keymaps")
 require("cnf.lsp")
