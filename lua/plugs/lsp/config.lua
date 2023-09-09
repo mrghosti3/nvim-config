@@ -1,22 +1,11 @@
-local status_ok, mason = pcall(require, "mason")
-if not status_ok then
-  return
-end
-
-mason.setup()
-
-local mason_lsp_status_ok, mason_lsp = pcall(require, "mason-lspconfig")
-if not mason_lsp_status_ok then
-  return
-end
-
+local mason_lsp = require("mason-lspconfig")
 local lspconfig = require("lspconfig")
 
 local handler_setup = {
   function(server_name)
     local opts = {
-      on_attach = require("cnf.lsp.handlers").on_attach,
-      capabilities = require("cnf.lsp.handlers").capabilities,
+      on_attach = require("plugs.lsp.handlers").on_attach,
+      capabilities = require("plugs.lsp.handlers").capabilities,
     }
 
     lspconfig[server_name].setup(opts)
@@ -37,8 +26,8 @@ local custom_confs = {
 
 for _, server in pairs(custom_confs) do
   local opts = {
-    on_attach = require("cnf.lsp.handlers").on_attach,
-    capabilities = require("cnf.lsp.handlers").capabilities,
+    on_attach = require("plugs.lsp.handlers").on_attach,
+    capabilities = require("plugs.lsp.handlers").capabilities,
   }
   local has_opts, server_opts = pcall(require, "serv-conf."..server)
   if has_opts then

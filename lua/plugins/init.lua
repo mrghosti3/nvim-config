@@ -100,14 +100,37 @@ return {
 
     -- LSP
     {
-        "neovim/nvim-lspconfig", -- lua integration with native LSP
+        "williamboman/mason.nvim", -- enables LSP
         lazy = true,
-        priority = 90,
-        event = { "BufReadPost", "BufNewFile" },
-        cmd = { "LspInfo", "LspInstall", "LspUninstall", "LspStart" },
+        cmd = {
+            "Mason",
+            "MasonUpdate",
+            "MasonInstall",
+            "MasonUninstall",
+            "MasonUninstallAll",
+            "MasonLog",
+        },
+        config = function() require("plugs.lsp.mason_set") end
     },
-    "williamboman/mason.nvim",           -- enables LSP
-    "williamboman/mason-lspconfig.nvim", -- mason.nvim integration with nvim-lspconfig
+    {
+        "williamboman/mason-lspconfig.nvim", -- mason.nvim integration with nvim-lspconfig
+        lazy = true,
+        event = { "BufRead", "BufNewFile", "BufAdd" },
+        keys = {
+            "gd", "gD", "K", "gi", "<F2>", "[d", "gl", "]d",
+            "<leader>q", "<leader>rn", "<leader>a",
+        },
+        dependencies = {
+            {
+                "neovim/nvim-lspconfig", -- lua integration with native LSP
+                lazy = true,
+                event = { "BufReadPost", "BufNewFile" },
+                cmd = { "LspInfo", "LspInstall", "LspUninstall", "LspStart" },
+            },
+            "williamboman/mason.nvim",
+        },
+        config = function() require("plugs.lsp.config") end
+    },
     {
         "jose-elias-alvarez/null-ls.nvim",
         dependencies = "nvim-lua/plenary.nvim"

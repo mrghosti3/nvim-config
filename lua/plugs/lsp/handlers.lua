@@ -70,8 +70,6 @@ local function lsp_keymaps(bufnr)
 
   local keymap = vim.api.nvim_set_keymap
   keymap("n", "gr", "<cmd>Trouble lsp_references<CR>", opts)
-  -- TODO: Map gR to Trouble function
-  --[[ keymap("n", "gR", "<cmd>Trouble lsp_type_definitions<CR>", opts) ]]
   vim.cmd([[ command! Format execute 'lua vim.lsp.buf.format({async = true})' ]])
 end
 
@@ -79,7 +77,6 @@ end
 
 M.on_attach = function(client, bufnr)
   if client.name == "tsserver" then
-    --[[ client.resolved_capabilities.document_formatting = false ]]
     client.server_capabilities.documentFormattingProvider = false
   end
   lsp_keymaps(bufnr)
