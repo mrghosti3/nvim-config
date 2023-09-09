@@ -7,7 +7,7 @@ return {
             "L3MON4D3/LuaSnip",
             lazy = true,
             dependencies = "rafamadriz/friendly-snippets", -- a bunch of snippets to use
-            config = function() require("plugs.lsp.luasnip") end
+            config = function() require("plugs.lsp.snip") end
         },
         {
             "windwp/nvim-autopairs", -- Autopairs, integrates with both cmp and treesitter

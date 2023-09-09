@@ -18,6 +18,7 @@ vim.opt.rtp:prepend(lazypath)
 -- Safely loads packer. On error doesn't spam with error messages.
 local status_ok, lazy = pcall(require, "lazy")
 if not status_ok then
+  vim.notify("Lazy plugin loader not found", vim.log.levels.WARN)
   return
 end
 
