@@ -35,12 +35,12 @@ local custom_confs = {
   --[[ "tsserver", ]]
 }
 
-for _, server in pairs(custom_confs ) do
+for _, server in pairs(custom_confs) do
   local opts = {
     on_attach = require("cnf.lsp.handlers").on_attach,
     capabilities = require("cnf.lsp.handlers").capabilities,
   }
-  local has_opts, server_opts = pcall(require, "cnf.lsp.settings."..server)
+  local has_opts, server_opts = pcall(require, "serv-conf."..server)
   if has_opts then
     opts = vim.tbl_deep_extend("force", opts, server_opts)
   end
