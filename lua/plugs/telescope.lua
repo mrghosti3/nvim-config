@@ -1,7 +1,4 @@
-local status_ok, telescope = pcall(require, "telescope")
-if not status_ok then
-  return
-end
+local telescope = require("telescope")
 
 local actions = require "telescope.actions"
 
@@ -24,7 +21,7 @@ local function single_or_multi_select(prompt_bufnr)
   end
 end
 
-telescope.setup {
+telescope.setup({
   defaults = {
     prompt_prefix = "> ",
     selection_caret = "> ",
@@ -122,7 +119,7 @@ telescope.setup {
     -- }
     -- please take a look at the readme of the extension you want to configure
   },
-}
+})
 
 -- TELESCOPE KEYMAPS
 local tbuiltin = require("telescope.builtin")

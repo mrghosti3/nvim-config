@@ -1,9 +1,6 @@
 -- following options are the default
 -- each of these are documented in `:help nvim-tree.OPTION_NAME`
-local status_ok, nvim_tree = pcall(require, "nvim-tree")
-if not status_ok then
-  return
-end
+local nvim_tree = require('nvim-tree')
 
 -- This function has been generated from your
 --   view.mappings.list
@@ -24,7 +21,13 @@ local function my_on_attach(bufnr)
   local api = require('nvim-tree.api')
 
   local function opts(desc)
-    return { desc = 'nvim-tree: ' .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
+    return {
+      desc = 'nvim-tree: ' .. desc,
+      buffer = bufnr,
+      noremap = true,
+      silent = true,
+      nowait = true
+    }
   end
 
   vim.keymap.set('n', '<C-]>', api.tree.change_root_to_node,          opts('CD'))
@@ -142,6 +145,3 @@ nvim_tree.setup {
     }
   }
 }
-
-local keymap = vim.keymap.set
-keymap("n", "<leader>e", ":NvimTreeToggle<cr>", { desc = 'NvimTree toggle', noremap = true, silent = true })

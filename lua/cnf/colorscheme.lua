@@ -1,8 +1,4 @@
-local status_scheme_ok, catppuccin = pcall(require, "catppuccin")
-if not status_scheme_ok then
-  vim.notify("catppuccin not found!")
-  return
-end
+local catppuccin = require("catppuccin")
 
 catppuccin.setup({
     flavour = "mocha", -- latte, frappe, macchiato, mocha
@@ -50,13 +46,7 @@ catppuccin.setup({
 -- setup must be called before loading
 vim.cmd.colorscheme "catppuccin"
 
-local status_color_ok, colorizer = pcall(require, "colorizer")
-if not status_color_ok then
-  vim.notify("colorizer not found!")
-  return
-end
-
-colorizer.setup({
+require("colorizer").setup({
     user_default_options = {
         names = false,
     },

@@ -1,9 +1,6 @@
-local status_ok, configs = pcall(require, "nvim-treesitter.configs")
-if not status_ok then
-  return
-end
+local ts_configs = require("nvim-treesitter.configs")
 
-configs.setup {
+ts_configs.setup({
   ensure_installed = {
     "c", "rust", "lua", "python",
     "php", "html", "javascript"
@@ -35,4 +32,4 @@ configs.setup {
     extented_mode = true,
     max_file_lines = nil,
   }
-}
+})
