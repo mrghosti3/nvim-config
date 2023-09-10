@@ -26,7 +26,7 @@ return {
     },
     {
         "nvim-lualine/lualine.nvim",
-        event = "VeryLazy",
+        event = { "VeryLazy" },
         config = function() require("plugs.lualine") end
     },
     {
@@ -41,7 +41,7 @@ return {
     },
     {
         "folke/todo-comments.nvim",
-        event = "VeryLazy",
+        event = { "VeryLazy" },
         dependencies = "nvim-lua/plenary.nvim",
         config = function() require("plugs.todo") end
     },
@@ -49,7 +49,7 @@ return {
     -- QoL Utils
     {
         'nvim-telescope/telescope.nvim',
-        event = "VeryLazy",
+        event = { "VeryLazy", },
         dependencies = {
             'nvim-lua/plenary.nvim'
         },
@@ -57,7 +57,7 @@ return {
     },
     {
         "kylechui/nvim-surround", -- Shortcuts for surrounding text with () {} [] "" ''
-        event = "VeryLazy",
+        event = { "VeryLazy", },
         opts = {
             keymaps = {
                 insert = "<C-g>s",
@@ -82,7 +82,7 @@ return {
     }, -- Commenting shortcuts
     {
         "nmac427/guess-indent.nvim",
-        event = "VeryLazy",
+        event = { "VeryLazy" },
         opts = {
             auto_cmd = true,
             filetype_exclude = {
