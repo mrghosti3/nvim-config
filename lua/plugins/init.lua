@@ -102,6 +102,7 @@ return {
     {
         "williamboman/mason.nvim", -- enables LSP
         lazy = true,
+        version = "1.*",
         cmd = {
             "Mason",
             "MasonUpdate",
@@ -113,21 +114,11 @@ return {
         config = function() require("plugs.lsp.mason_set") end
     },
     {
-        "williamboman/mason-lspconfig.nvim", -- mason.nvim integration with nvim-lspconfig
-        lazy = true,
-        event = { "BufRead", "BufNewFile", "BufAdd" },
-        keys = {
-            "gd", "gD", "K", "gi", "<F2>", "[d", "gl", "]d",
-            "<leader>q", "<leader>rn", "<leader>a",
-        },
+        "williamboman/mason-lspconfig.nvim", -- integration with nvim-lspconfig
+        version = "1.*",
         dependencies = {
-            {
-                "neovim/nvim-lspconfig", -- lua integration with native LSP
-                lazy = true,
-                event = { "BufReadPost", "BufNewFile" },
-                cmd = { "LspInfo", "LspInstall", "LspUninstall", "LspStart" },
-            },
-            "williamboman/mason.nvim",
+            "neovim/nvim-lspconfig", -- lua integration with native LSP
+            "hrsh7th/cmp-nvim-lsp",
         },
         config = function() require("plugs.lsp.config") end
     },

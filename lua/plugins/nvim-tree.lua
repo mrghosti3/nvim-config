@@ -1,6 +1,7 @@
 return {
     "nvim-tree/nvim-tree.lua", -- Plugin for displaying FS tree
     lazy = true,
+    event = { "VeryLazy" },
     cmd = {
         "NvimTreeToggle",
         "NvimTreeFocus",
