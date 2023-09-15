@@ -1,28 +1,26 @@
 return {
-  settings = {
-    ['rust-analyzer'] = {
-      cargo = {
-        buildScripts = {
-          enabled = true
-        },
-        features = "all"
-      },
-      files = {
-        excludeDirs = {
-          ".git",
-          "node_modules",
-          "build",
+    autostart = true,
+    cmd = {
+        "/usr/bin/rust-analyzer",
+    },
+    settings = {
+        ['rust-analyzer'] = {
+            cargo = {
+                features = "all"
+            },
+            files = {
+                excludeDirs = {
+                    ".git",
+                    "node_modules",
+                    "build",
+                }
+            },
+            imports = {
+                granularity = {
+                    group = "module"
+                },
+                prefix = "self"
+            },
         }
-      },
-      procMacro = {
-        enabled = true
-      },
-      imports = {
-        granularity = {
-          group = "module"
-        },
-        prefix = "self"
-      }
     }
-  }
 }
