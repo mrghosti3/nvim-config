@@ -1,5 +1,3 @@
-local lualine = require("lualine")
-
 local hide_in_width = function()
     return vim.fn.winwidth(0) > 80
 end
@@ -58,7 +56,7 @@ local spaces = function()
     return "\\t : " .. vim.api.nvim_buf_get_option(0, "shiftwidth")
 end
 
-lualine.setup({
+require("lualine").setup({
     options = {
         icons_enabled = true,
         theme = 'auto',
@@ -66,7 +64,7 @@ lualine.setup({
         section_separators = { left = '', right = '' },
         disabled_filetypes = {
             statusline = {
-                "alpha", "dashboard", "NvimTree", "Outline", "Trouble", "help"
+                "alpha", "dashboard", "NvimTree", "Outline", "Trouble", "help", "qf"
             },
             winbar = {},
         },
