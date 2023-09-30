@@ -29,6 +29,19 @@ telescope.setup({
                 exclude = { 1, -1, -2, -3 }
             }
         },
+        layout_config = {
+            horizontal = {
+                prompt_position = "bottom",
+                preview_width = 0.55,
+                results_width = 0.8,
+            },
+            vertical = {
+                mirror = false,
+            },
+            width = 0.69,
+            height = 0.75,
+            preview_cutoff = 120,
+        },
         mappings = {
             i = {
                 -- History keymap
@@ -91,6 +104,9 @@ telescope.setup({
         },
         buffers = {
             theme = "dropdown",
+        },
+        git_status = {
+            theme = "dropdown"
         }
     },
     extensions = {
