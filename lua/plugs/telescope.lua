@@ -37,26 +37,20 @@ telescope.setup({
         -- Selection movement keymap
         ["<C-j>"] = actions.move_selection_next,
         ["<C-k>"] = actions.move_selection_previous,
-        ["<Down>"] = actions.move_selection_next,
-        ["<Up>"] = actions.move_selection_previous,
         -- Window keymap
-        ["<esc>"] = actions.close,
         ["<C-q>"] = actions.send_to_qflist + actions.open_qflist,
 
-        ["<CR>"] = single_or_multi_select,
-        -- NOTE: Huh?
-        ["<C-x>"] = actions.select_horizontal,
-        ["<C-v>"] = actions.select_vertical,
-        ["<C-t>"] = actions.select_tab,
+        -- Opening selection
+        ["<CR>"] = single_or_multi_select,      -- in new buffer
+        ["<C-x>"] = actions.select_horizontal,  -- in horizontal split
+        ["<C-v>"] = actions.select_vertical,    -- in vertical split
+        ["<C-t>"] = actions.select_tab,         -- in new tab
 
-        ["<C-u>"] = actions.preview_scrolling_up,
-        ["<C-d>"] = actions.preview_scrolling_down,
+        ["<PageUp>"] = actions.preview_scrolling_up,
+        ["<PageDown>"] = actions.preview_scrolling_down,
 
-        ["<PageUp>"] = actions.results_scrolling_up,
-        ["<PageDown>"] = actions.results_scrolling_down,
-
-        ["<Tab>"] = actions.toggle_selection + actions.move_selection_worse,
-        ["<S-Tab>"] = actions.toggle_selection + actions.move_selection_better,
+        ["<Tab>"] = actions.add_selection + actions.move_selection_worse,
+        ["<S-Tab>"] = actions.remove_selection + actions.move_selection_better,
         ["<M-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
         ["<C-l>"] = actions.complete_tag,
         ["<C-_>"] = actions.which_key, -- keys from pressing <C-/>
@@ -75,20 +69,9 @@ telescope.setup({
 
         ["j"] = actions.move_selection_next,
         ["k"] = actions.move_selection_previous,
-        ["H"] = actions.move_to_top,
-        ["M"] = actions.move_to_middle,
-        ["L"] = actions.move_to_bottom,
-
-        ["<Down>"] = actions.move_selection_next,
-        ["<Up>"] = actions.move_selection_previous,
         ["gg"] = actions.move_to_top,
+        ["M"] = actions.move_to_middle,
         ["G"] = actions.move_to_bottom,
-
-        ["<C-u>"] = actions.preview_scrolling_up,
-        ["<C-d>"] = actions.preview_scrolling_down,
-
-        ["<PageUp>"] = actions.results_scrolling_up,
-        ["<PageDown>"] = actions.results_scrolling_down,
 
         ["?"] = actions.which_key,
       },
