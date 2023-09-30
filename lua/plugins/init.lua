@@ -33,11 +33,8 @@ return {
         "lukas-reineke/indent-blankline.nvim", -- Indentation lines
         lazy = true,
         event = { "BufRead" },
-        opts = {
-            show_current_context = false,
-            show_current_context_start = true,
-            show_end_of_line = true
-        }
+        main = "ibl",
+        config = function() require("plugs.indent-blank") end
     },
     {
         "folke/todo-comments.nvim",
