@@ -1,7 +1,9 @@
+local ra_path = vim.fn.expand("$HOME/.cargo/bin/rust-analyzer")
+
 return {
     autostart = true,
     cmd = {
-        "/usr/bin/rust-analyzer",
+        ra_path,
     },
     settings = {
         ['rust-analyzer'] = {
@@ -13,6 +15,7 @@ return {
                     ".git",
                     "node_modules",
                     "build",
+                    "target"
                 }
             },
             imports = {
