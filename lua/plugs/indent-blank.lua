@@ -22,6 +22,9 @@ hooks.register(hooks.type.HIGHLIGHT_SETUP, function()
 end)
 
 require("ibl").setup({
+    scope = {
+        show_start = false
+    },
     indent = {
         highlight = highlight
     }
