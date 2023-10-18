@@ -22,6 +22,7 @@ hooks.register(hooks.type.HIGHLIGHT_SETUP, function()
 end)
 
 require("ibl").setup({
+    debounce = 300,
     scope = {
         show_start = false
     },
