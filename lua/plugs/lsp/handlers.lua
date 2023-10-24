@@ -9,7 +9,14 @@ M.setup = function()
     }
 
     for _, sign in ipairs(signs) do
-        vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
+        vim.fn.sign_define(
+            sign.name,
+            {
+                texthl = sign.name,
+                text = sign.text,
+                numhl = ""
+            }
+        )
     end
 
     local config = {
@@ -34,27 +41,32 @@ M.setup = function()
 
     vim.diagnostic.config(config)
 
-    vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-        border = "rounded",
-        width = 60,
-    })
+    vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
+        vim.lsp.handlers.hover,
+        {
+            border = "rounded",
+            width = 60,
+        }
+    )
 
-    vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-        border = "rounded",
-        width = 60,
-    })
+    vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
+        vim.lsp.handlers.signature_help,
+        {
+            border = "rounded",
+            width = 60,
+        }
+    )
 end
 
 local function lsp_highlight_document(client)
-    local status_ok, illuminate = pcall(require, "illuminate")
-    if not status_ok then
-        return
-    end
-    illuminate.on_attach(client)
+    require("illuminate").on_attach(client)
 end
 
 local function lsp_keymaps(bufnr)
-    local opts = { noremap = true, silent = true }
+    local opts = {
+        noremap = true,
+        silent = true
+    }
     local keymap_buf = vim.api.nvim_buf_set_keymap
     keymap_buf(bufnr, "n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
     keymap_buf(bufnr, "n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts) -- not all LSP servers implement!
