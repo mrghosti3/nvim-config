@@ -3,7 +3,8 @@ local ts_configs = require("nvim-treesitter.configs")
 ts_configs.setup({
   ensure_installed = {
     "c", "rust", "lua", "python",
-    "php", "html", "javascript"
+    "php", "html", "javascript",
+    'zig'
   },
   sync_install = false,
   ignore_install = { "haskell" }, -- List of parsers to ignore installing
