@@ -95,6 +95,7 @@ return {
         }
     },
 
+
     -- LSP
     {
         "williamboman/mason.nvim", -- enables LSP
@@ -120,7 +121,7 @@ return {
         config = function() require("plugs.lsp.config") end
     },
     {
-        "jose-elias-alvarez/null-ls.nvim",
+        "nvimtools/none-ls.nvim",
         dependencies = "nvim-lua/plenary.nvim"
     },
     {
@@ -147,4 +148,7 @@ return {
         "nvim-lua/plenary.nvim",
         lazy = true
     },
+    {
+        "JoosepAlviste/nvim-ts-context-commentstring",
+    }
 }

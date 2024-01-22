@@ -13,7 +13,6 @@ return {
     dependencies = {
         "HiPhish/nvim-ts-rainbow2",
         "RRethy/vim-illuminate",
-        "JoosepAlviste/nvim-ts-context-commentstring",
     },
     config = function ()
         require("plugs.treesitter")
