@@ -125,11 +125,11 @@ return {
         dependencies = "nvim-lua/plenary.nvim"
     },
     {
-        "simrat39/symbols-outline.nvim",
+        "hedyhli/outline.nvim",
         lazy = true,
-        cmd = "SymbolsOutline",
+        cmd = "Outline",
         keys = {
-            { "<leader>sf", "<cmd>SymbolsOutline<cr>" }
+            { "<leader>sf", "<cmd>Outline<cr>" }
         },
         config = function() require("plugs.symbols") end
     },
