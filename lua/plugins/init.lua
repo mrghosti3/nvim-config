@@ -122,7 +122,10 @@ return {
     },
     {
         "nvimtools/none-ls.nvim",
-        dependencies = "nvim-lua/plenary.nvim"
+        dependencies = "nvim-lua/plenary.nvim",
+        config = function()
+            require("plugs.lsp.null_ls")
+        end
     },
     {
         "hedyhli/outline.nvim",

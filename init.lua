@@ -23,5 +23,3 @@ if not status_ok then
 end
 
 lazy.setup('plugins')
-
-require("cnf.lsp")
