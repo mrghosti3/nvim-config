@@ -46,6 +46,7 @@ return {
     -- QoL Utils
     {
         'nvim-telescope/telescope.nvim',
+        version = "^0.1.5",
         event = { "VeryLazy", },
         dependencies = {
             'nvim-lua/plenary.nvim'
@@ -54,6 +55,7 @@ return {
     },
     {
         "kylechui/nvim-surround", -- Shortcuts for surrounding text with () {} [] "" ''
+        version = "^2.1.5",
         event = { "VeryLazy", },
         opts = {
             keymaps = {
@@ -100,7 +102,7 @@ return {
     {
         "williamboman/mason.nvim", -- enables LSP
         lazy = true,
-        version = "1.*",
+        version = "^1.10",
         cmd = {
             "Mason",
             "MasonUpdate",
