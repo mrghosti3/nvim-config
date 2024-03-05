@@ -14,21 +14,27 @@ require("gitsigns").setup {
         },
         delete = {
             hl = "GitSignsDelete",
-            text = "契",
+            text = "▁",
             numhl = "GitSignsDeleteNr",
             linehl = "GitSignsDeleteLn"
         },
         topdelete = {
             hl = "GitSignsDelete",
-            text = "契",
+            text = "▔",
             numhl = "GitSignsDeleteNr",
             linehl = "GitSignsDeleteLn"
         },
         changedelete = {
             hl = "GitSignsChange",
-            text = "▎",
+            text = "~",
             numhl = "GitSignsChangeNr",
             linehl = "GitSignsChangeLn"
+        },
+        untracked = {
+            hl = "GitSignsUntracked",
+            text = "┆",
+            numhl = "GitSignsUntrackedNr",
+            linehl = "GitSignsUntrackedLn"
         },
     },
     watch_gitdir = {
