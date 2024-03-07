@@ -134,7 +134,8 @@ return {
         lazy = true,
         cmd = "Outline",
         keys = {
-            { "<leader>sf", "<cmd>Outline<cr>" }
+            { "<leader>st", "<cmd>Outline<cr>" },
+            { "<leader>sf", "<cmd>OutlineFocus<cr>" },
         },
         config = function() require("plugs.symbols") end
     },
