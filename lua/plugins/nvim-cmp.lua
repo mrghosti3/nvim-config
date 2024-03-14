@@ -27,6 +27,6 @@ return {
         }
     },
     config = function()
-        require('plugs.lsp.cmp')
+        require('plugs.lsp.nvim_cmp')
     end
 }
