@@ -1,11 +1,6 @@
 local cmp = require("cmp")
 local luasnip = require("luasnip")
 
-local check_backspace = function()
-  local col = vim.fn.col "." - 1
-  return col == 0 or vim.fn.getline("."):sub(col, col):match "%s"
-end
-
 --   פּ ﯟ   some other good icons
 -- find more here: https://www.nerdfonts.com/cheat-sheet
 local kind_icons = {
