@@ -1,4 +1,4 @@
-local ra_path = vim.fn.expand("$HOME/.cargo/bin/rust-analyzer")
+local ra_path = vim.fn.expand("$HOME/.local/cargo/bin/rust-analyzer")
 
 return {
     autostart = true,
