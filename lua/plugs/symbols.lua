@@ -158,7 +158,9 @@ require("outline").setup({
         }
     },
     symbols = {
-        blacklist = {},
+        filter = nil,
+        icon_fetcher = nil,
+        icon_source = nil,
         icons = {
             File = { icon = '󰈔', hl = 'Identifier' },
             Module = { icon = '󰆧', hl = 'Include' },
