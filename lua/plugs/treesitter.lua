@@ -12,7 +12,7 @@ ts_configs.setup({
     enable = true,                -- false will disable the whole extension
     disable = function(lang, buf)
       local disabled_langs = { "html" }
-      local max_file_size = 10 * 1024 -- 10 KB
+      local max_file_size = 100 * 1024 -- 100 KB
 
       local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
       if ok and stats and stats.size > max_file_size then
