@@ -36,10 +36,11 @@ catppuccin.setup({
         cmp = true,
         gitsigns = true,
         nvimtree = true,
+        treesitter = true,
+        symbols_outline = true,
         telescope = true,
         notify = false,
         mini = false,
-        -- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
     },
 })
 
