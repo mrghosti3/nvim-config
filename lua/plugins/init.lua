@@ -3,6 +3,7 @@ return {
     {
         "catppuccin/nvim",
         name = "catppuccin",
+        version = '^1.7.0',
         priority = 1000,
         config = function() require("cnf.colorscheme") end
     },
