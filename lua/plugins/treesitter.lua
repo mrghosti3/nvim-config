@@ -11,7 +11,7 @@ return {
         pcall(require('nvim-treesitter.install').update { with_sync = true })
     end,
     dependencies = {
-        "HiPhish/nvim-ts-rainbow2",
+        "hiphish/rainbow-delimiters.nvim",
         "RRethy/vim-illuminate",
     },
     config = function ()

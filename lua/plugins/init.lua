@@ -32,6 +32,7 @@ return {
     },
     {
         "lukas-reineke/indent-blankline.nvim", -- Indentation lines
+        version = "3.5.*",
         lazy = true,
         event = { "BufRead" },
         main = "ibl",
@@ -143,6 +144,7 @@ return {
 
     {
         "lewis6991/gitsigns.nvim", -- Commands and integration for Git
+        version = "0.8.*",
         lazy = true,
         event = { "BufRead" },
         config = function()
