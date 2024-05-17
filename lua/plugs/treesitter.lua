@@ -1,17 +1,17 @@
-local ts_configs = require("nvim-treesitter.configs")
+local ts_configs = require('nvim-treesitter.configs')
 
 ts_configs.setup({
   ensure_installed = {
-    "c", "rust", "lua", "python",
-    "php", "html", "javascript",
-    'zig'
+    'c', 'rust', 'lua', 'python',
+    'html', 'javascript', 'zig'
   },
   sync_install = false,
-  ignore_install = { "haskell" }, -- List of parsers to ignore installing
+  ignore_install = { },
   highlight = {
-    enable = true,                -- false will disable the whole extension
+    -- false will disable the whole extension
+    enable = true,
     disable = function(lang, buf)
-      local disabled_langs = { "html" }
+      local disabled_langs = { 'html' }
       local max_file_size = 100 * 1024 -- 100 KB
 
       local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
@@ -27,7 +27,7 @@ ts_configs.setup({
     end,
     additional_vim_regex_highlighting = true,
   },
-  indent = { enable = true, disable = { "yaml" } },
+  indent = { enable = true, disable = { 'yaml' } },
   rainbow = {
     enable = true,
     extented_mode = true,
