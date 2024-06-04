@@ -32,7 +32,7 @@ return {
     },
     {
         "lukas-reineke/indent-blankline.nvim", -- Indentation lines
-        version = "3.5.*",
+        version = "^3.6",
         lazy = true,
         event = { "BufRead" },
         main = "ibl",
@@ -117,7 +117,7 @@ return {
     },
     {
         "williamboman/mason-lspconfig.nvim", -- integration with nvim-lspconfig
-        version = "1.*",
+        version = "^1.0",
         dependencies = {
             "neovim/nvim-lspconfig", -- lua integration with native LSP
             "hrsh7th/cmp-nvim-lsp",
