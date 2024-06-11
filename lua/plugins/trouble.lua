@@ -1,17 +1,15 @@
 return {
     "folke/trouble.nvim",
+    version = '^3.4',
     lazy = true,
     cmd = { "Trouble" },
     keys = {
-        {
-            "<leader>xx",
-            "<cmd>TroubleToggle workspace_diagnostics<cr>",
-            noremap = true,
-            silent = true
-        },
-        { "<leader>xd", "<cmd>TroubleToggle document_diagnostics<cr>", },
-        { "<leader>xw", "<cmd>TroubleToggle todo<cr>", },
-        { "<leader>xc", "<cmd>TroubleClose<cr>", },
+        { "<leader>xx", "<cmd>Trouble diagnostics toggle<cr>", },
+        { "<leader>xd", "<cmd>Trouble doc_diagnostics toggle<cr>", },
+        { "<leader>xs", "<cmd>Trouble symbols toggle<cr>", },
+        { "<leader>xw", "<cmd>Trouble todo toggle<cr>", },
+        { "<leader>xq", "<cmd>Trouble qflist toggle<cr>", },
+        { "<leader>xc", "<cmd>Trouble close toggle<cr>", },
     },
     dependencies = "nvim-lua/plenary.nvim",
     config = function() require("plugs.trouble") end
