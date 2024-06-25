@@ -11,7 +11,9 @@ return {
         "NvChad/nvim-colorizer.lua",
         name = "colorizer",
         commit = '125e4995b86a94405aaf40191738f4b6fcd8ed57',
-        dependencies = "catppuccin/nvim",
+        dependencies = {
+            "catppuccin"
+        }
     },
 
     -- Extra looks
