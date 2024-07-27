@@ -5,5 +5,5 @@ return {
         typeCheckingMode = "off"
       }
     }
-	},
+  },
 }

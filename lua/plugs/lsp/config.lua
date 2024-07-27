@@ -21,7 +21,6 @@ local custom_confs = {
   "pyright",
   "lua_ls",
   "tailwindcss",
-  --[[ "tsserver", ]]
 }
 
 for _, server in pairs(custom_confs) do
