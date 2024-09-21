@@ -17,6 +17,7 @@ local custom_confs = {
   "rust_analyzer",
   "intelephense",
   "jdtls",
+  "kotlin_language_server",
   "jsonls",
   "pyright",
   "lua_ls",
