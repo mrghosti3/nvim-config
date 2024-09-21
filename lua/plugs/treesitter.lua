@@ -3,7 +3,8 @@ local ts_configs = require('nvim-treesitter.configs')
 ts_configs.setup({
   ensure_installed = {
     'c', 'vimdoc', 'rust', 'lua', 'python',
-    'html', 'javascript', 'zig', 'markdown', 'markdown_inline'
+    'html', 'javascript', 'zig', 'markdown',
+    'markdown_inline', 'java', 'kotlin'
   },
   sync_install = false,
   ignore_install = {},
