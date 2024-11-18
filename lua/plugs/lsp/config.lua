@@ -15,6 +15,7 @@ local handler_setup = {
 local custom_confs = {
   "clangd",
   "rust_analyzer",
+  "denols",
   "intelephense",
   "jdtls",
   "kotlin_language_server",
