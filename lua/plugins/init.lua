@@ -49,6 +49,26 @@ return {
 
     -- QoL Utils
     {
+        "nvim-treesitter/nvim-treesitter",
+        lazy = true,
+        event = { "BufReadPost" },
+        cmd = {
+            'TSInstall',
+            'TSInstallInfo',
+            'TSUpdate',
+        },
+        build = function()
+            pcall(require('nvim-treesitter.install').update { with_sync = true })
+        end,
+        dependencies = {
+            "hiphish/rainbow-delimiters.nvim",
+            "RRethy/vim-illuminate",
+        },
+        config = function()
+            require("plugs.treesitter")
+        end
+    },
+    {
         'nvim-telescope/telescope.nvim',
         version = "^0.1.5",
         event = { "VeryLazy", },
@@ -100,9 +120,81 @@ return {
             }
         }
     },
-
+    {
+        "nvim-tree/nvim-tree.lua", -- Plugin for displaying FS tree
+        lazy = true,
+        event = { "VeryLazy" },
+        cmd = {
+            "NvimTreeToggle",
+            "NvimTreeFocus",
+            "NvimTreeCollapse",
+        },
+        keys = {
+            {
+                "<leader>e",
+                "<cmd>NvimTreeToggle<cr>",
+                desc = 'NvimTree toggle',
+                noremap = true,
+                silent = true
+            }
+        },
+        dependencies = {
+            "nvim-tree/nvim-web-devicons",
+        },
+        config = function()
+            require('plugs.nvimtree')
+        end
+    },
+    {
+        "folke/trouble.nvim",
+        version = '^3.4',
+        lazy = true,
+        cmd = { "Trouble" },
+        keys = {
+            { "<leader>xx", "<cmd>Trouble diagnostics toggle<cr>", },
+            { "<leader>xd", "<cmd>Trouble doc_diagnostics toggle<cr>", },
+            { "<leader>xs", "<cmd>Trouble symbols toggle<cr>", },
+            { "<leader>xw", "<cmd>Trouble todo toggle<cr>", },
+            { "<leader>xq", "<cmd>Trouble qflist toggle<cr>", },
+            { "<leader>xc", "<cmd>Trouble close toggle<cr>", },
+        },
+        dependencies = "nvim-lua/plenary.nvim",
+        config = function() require("plugs.trouble") end
+    },
 
     -- LSP
+    {
+        "hrsh7th/nvim-cmp", -- completion plugin
+        event = "InsertEnter",
+        lazy = true,
+        dependencies = {
+            {
+                "L3MON4D3/LuaSnip",
+                lazy = true,
+                dependencies = "rafamadriz/friendly-snippets", -- a bunch of snippets to use
+                config = function() require("plugs.lsp.snip") end
+            },
+            {
+                "windwp/nvim-autopairs", -- Autopairs, integrates with both cmp and treesitter
+                lazy = true,
+                event = { "InsertEnter" },
+                config = function()
+                    require("plugs.lsp.autopairs")
+                end
+            },
+            {
+                "saadparwaiz1/cmp_luasnip", -- snippet completions
+                "hrsh7th/cmp-nvim-lua",     -- nvim-cmp source for neovim lua API
+                "hrsh7th/cmp-nvim-lsp",     -- nvim-cmp integration with built-in LSP
+                "hrsh7th/cmp-buffer",       -- buffer completions
+                "hrsh7th/cmp-path",         -- path completions
+                "hrsh7th/cmp-cmdline",      -- cmdline completions
+            }
+        },
+        config = function()
+            require('plugs.lsp.nvim_cmp')
+        end
+    },
     {
         "williamboman/mason.nvim", -- enables LSP
         lazy = true,
