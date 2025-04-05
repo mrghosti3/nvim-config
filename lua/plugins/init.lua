@@ -3,7 +3,7 @@ return {
     {
         "catppuccin/nvim",
         name = "catppuccin",
-        version = '^1.7.0',
+        version = '^1.9',
         priority = 1000,
         config = function() require("cnf.colorscheme") end
     },
@@ -34,7 +34,7 @@ return {
     },
     {
         "lukas-reineke/indent-blankline.nvim", -- Indentation lines
-        version = "^3.6",
+        version = "^3.9",
         lazy = true,
         event = { "BufRead" },
         main = "ibl",
@@ -70,7 +70,7 @@ return {
     },
     {
         'nvim-telescope/telescope.nvim',
-        version = "^0.1.5",
+        version = "^0.1.8",
         event = { "VeryLazy", },
         dependencies = {
             'nvim-lua/plenary.nvim'
@@ -79,7 +79,7 @@ return {
     },
     {
         "kylechui/nvim-surround", -- Shortcuts for surrounding text with () {} [] "" ''
-        version = "^2.1.5",
+        version = "^3.1",
         event = { "VeryLazy", },
         opts = {
             keymaps = {
@@ -147,7 +147,7 @@ return {
     },
     {
         "folke/trouble.nvim",
-        version = '^3.4',
+        version = '^3.7',
         lazy = true,
         cmd = { "Trouble" },
         keys = {
@@ -198,7 +198,7 @@ return {
     {
         "williamboman/mason.nvim", -- enables LSP
         lazy = true,
-        version = "^1.10",
+        version = "^1.11",
         cmd = {
             "Mason",
             "MasonUpdate",
@@ -211,7 +211,7 @@ return {
     },
     {
         "williamboman/mason-lspconfig.nvim", -- integration with nvim-lspconfig
-        version = "^1.0",
+        version = "^1.32",
         dependencies = {
             "neovim/nvim-lspconfig", -- lua integration with native LSP
             "hrsh7th/cmp-nvim-lsp",
@@ -238,7 +238,7 @@ return {
 
     {
         "lewis6991/gitsigns.nvim", -- Commands and integration for Git
-        version = "0.8.*",
+        version = "^1.0",
         lazy = true,
         event = { "BufRead" },
         config = function()
