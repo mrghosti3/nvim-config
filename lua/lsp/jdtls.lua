@@ -1,5 +1,4 @@
 return {
-  autostart = false,
   settings = {
     java = {
       codeGeneration = {

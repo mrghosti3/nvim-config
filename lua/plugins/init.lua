@@ -35,8 +35,6 @@ return {
     {
         "lukas-reineke/indent-blankline.nvim", -- Indentation lines
         version = "^3.9",
-        lazy = true,
-        event = { "BufRead" },
         main = "ibl",
         config = function() require("plugs.indent-blank") end
     },
@@ -165,8 +163,6 @@ return {
     -- LSP
     {
         "hrsh7th/nvim-cmp", -- completion plugin
-        event = "InsertEnter",
-        lazy = true,
         dependencies = {
             {
                 "L3MON4D3/LuaSnip",
@@ -196,24 +192,26 @@ return {
         end
     },
     {
-        "williamboman/mason.nvim", -- enables LSP
-        lazy = true,
-        version = "^1.11",
-        cmd = {
-            "Mason",
-            "MasonUpdate",
-            "MasonInstall",
-            "MasonUninstall",
-            "MasonUninstallAll",
-            "MasonLog",
-        },
-        config = function() require("plugs.lsp.mason_set") end
-    },
-    {
-        "williamboman/mason-lspconfig.nvim", -- integration with nvim-lspconfig
-        version = "^1.32",
+        "mason-org/mason-lspconfig.nvim", -- integration with nvim-lspconfig
+        version = "^2",
         dependencies = {
-            "neovim/nvim-lspconfig", -- lua integration with native LSP
+            {
+                {
+                    "mason-org/mason.nvim", -- enables LSP
+                    lazy = true,
+                    version = "^2",
+                    cmd = {
+                        "Mason",
+                        "MasonUpdate",
+                        "MasonInstall",
+                        "MasonUninstall",
+                        "MasonUninstallAll",
+                        "MasonLog",
+                    },
+                },
+                "neovim/nvim-lspconfig", -- lua integration with native LSP
+                version = "^2"
+            },
             "hrsh7th/cmp-nvim-lsp",
         },
         config = function() require("plugs.lsp.config") end
