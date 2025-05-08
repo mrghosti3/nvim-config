@@ -25,7 +25,7 @@ return {
             "moll/vim-bbye",
             "nvim-tree/nvim-web-devicons",
         },
-        config = function() require("plugs.bufferline") end
+        config = function() require("cnf.bufferline") end
     },
     {
         "nvim-lualine/lualine.nvim",
@@ -33,19 +33,19 @@ return {
         dependencies = {
             "nvim-tree/nvim-web-devicons",
         },
-        config = function() require("plugs.lualine") end
+        config = function() require("cnf.lualine") end
     },
     {
         "lukas-reineke/indent-blankline.nvim", -- Indentation lines
         version = "^3.9",
         main = "ibl",
-        config = function() require("plugs.indent-blank") end
+        config = function() require("cnf.indent-blank") end
     },
     {
         "folke/todo-comments.nvim",
         event = { "VeryLazy" },
         dependencies = "nvim-lua/plenary.nvim",
-        config = function() require("plugs.todo") end
+        config = function() require("cnf.todo") end
     },
 
     -- QoL Utils
@@ -66,7 +66,7 @@ return {
             "RRethy/vim-illuminate",
         },
         config = function()
-            require("plugs.treesitter")
+            require("cnf.treesitter")
         end
     },
     {
@@ -76,7 +76,7 @@ return {
         dependencies = {
             'nvim-lua/plenary.nvim'
         },
-        config = function() require("plugs.telescope") end
+        config = function() require("cnf.telescope") end
     },
     {
         "kylechui/nvim-surround", -- Shortcuts for surrounding text with () {} [] "" ''
@@ -101,7 +101,7 @@ return {
         "numToStr/Comment.nvim",
         lazy = false,
         config = function()
-            require("plugs.comment")
+            require("cnf.comment")
         end
     }, -- Commenting shortcuts
     {
@@ -143,7 +143,7 @@ return {
             "nvim-tree/nvim-web-devicons",
         },
         config = function()
-            require('plugs.nvimtree')
+            require('cnf.nvimtree')
         end
     },
     {
@@ -160,7 +160,7 @@ return {
             { "<leader>xc", "<cmd>Trouble close toggle<cr>", },
         },
         dependencies = "nvim-lua/plenary.nvim",
-        config = function() require("plugs.trouble") end
+        config = function() require("cnf.trouble") end
     },
 
     -- LSP
@@ -171,14 +171,14 @@ return {
                 "L3MON4D3/LuaSnip",
                 lazy = true,
                 dependencies = "rafamadriz/friendly-snippets", -- a bunch of snippets to use
-                config = function() require("plugs.lsp.snip") end
+                config = function() require("cnf.lsp.snip") end
             },
             {
                 "windwp/nvim-autopairs", -- Autopairs, integrates with both cmp and treesitter
                 lazy = true,
                 event = { "InsertEnter" },
                 config = function()
-                    require("plugs.lsp.autopairs")
+                    require("cnf.lsp.autopairs")
                 end
             },
             {
@@ -191,7 +191,7 @@ return {
             }
         },
         config = function()
-            require('plugs.lsp.nvim_cmp')
+            require('cnf.lsp.nvim_cmp')
         end
     },
     {
@@ -217,13 +217,13 @@ return {
             },
             "hrsh7th/cmp-nvim-lsp",
         },
-        config = function() require("plugs.lsp.config") end
+        config = function() require("cnf.lsp.config") end
     },
     {
         "nvimtools/none-ls.nvim",
         dependencies = "nvim-lua/plenary.nvim",
         config = function()
-            require("plugs.lsp.null_ls")
+            require("cnf.lsp.null_ls")
         end
     },
     {
@@ -234,7 +234,7 @@ return {
             { "<leader>st", "<cmd>Outline<cr>" },
             { "<leader>sf", "<cmd>OutlineFocus<cr>" },
         },
-        config = function() require("plugs.symbols") end
+        config = function() require("cnf.symbols") end
     },
 
     {
@@ -243,7 +243,7 @@ return {
         lazy = true,
         event = { "BufRead" },
         config = function()
-            require("plugs.gitsigns")
+            require("cnf.gitsigns")
         end
     },
 
