@@ -1,8 +1,6 @@
-require('lspconfig')
-local mason_lsp = require("mason-lspconfig")
 require("mason").setup()
 
-mason_lsp.setup({
+require("mason-lspconfig").setup({
   ensure_installed = {
     "lua_ls",
     "bashls",
@@ -20,21 +18,11 @@ mason_lsp.setup({
   }
 })
 
-local default_cap = require('cmp_nvim_lsp').default_capabilities()
-for _, server in ipairs(mason_lsp.get_installed_servers()) do
-  local opts = {
-    capabilities = default_cap,
-    noremap = true,
-    silent = true,
-  }
-
-  local has_opts, server_opts = pcall(require, "lsp." .. server)
-  if has_opts then
-    opts = vim.tbl_deep_extend('force', opts, server_opts)
-  end
-
-  vim.lsp.config(server, opts)
-end
+vim.lsp.config('*', {
+  capabilities = require('cmp_nvim_lsp').default_capabilities(),
+  noremap = true,
+  silent = true,
+})
 
 vim.api.nvim_create_autocmd("LspAttach", {
   desc = "Set LSP keymaps",
