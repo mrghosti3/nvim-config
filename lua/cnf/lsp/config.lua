@@ -18,6 +18,20 @@ require("mason-lspconfig").setup({
   }
 })
 
+vim.diagnostic.config({
+  underline = true,
+  severity_sort = true,
+  float = {
+    focusable = false,
+    style = 'minimal',
+    border = 'single',
+    source = true,
+    header = '',
+    prefix = '',
+    suffix = '',
+  },
+})
+
 vim.lsp.config('*', {
   capabilities = require('cmp_nvim_lsp').default_capabilities(),
   noremap = true,
