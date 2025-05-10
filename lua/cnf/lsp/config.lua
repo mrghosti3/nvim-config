@@ -63,8 +63,8 @@ vim.api.nvim_create_autocmd("LspAttach", {
     keymap('n', '[d', vdiag.goto_next, opts)
     keymap('n', ']d', vdiag.goto_prev, opts)
 
+    keymap('n', '<leader>a', vlsp.code_action, opts)
     --[[ keymap('n', 'gi', "<cmd>lua vim.lsp.buf.implementation()<CR>", opts) ]]
-    --[[ keymap('n', '<leader>a', "<cmd>lua vim.lsp.buf.code_action()<CR>", opts) ]]
     --[[ keymap('n', '<leader>q', "<cmd>lua vim.diagnostic.setloclist()<CR>", opts) ]]
 
     keymap('n', 'gr', "<cmd>Trouble lsp_references<CR>", opts)
