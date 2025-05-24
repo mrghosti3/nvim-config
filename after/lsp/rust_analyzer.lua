@@ -1,9 +1,4 @@
-local ra_path = vim.fn.expand("$HOME/.local/cargo/bin/rust-analyzer")
-
 return {
-  cmd = {
-    ra_path,
-  },
   settings = {
     ['rust-analyzer'] = {
       cargo = {
