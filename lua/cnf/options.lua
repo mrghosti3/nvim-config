@@ -11,7 +11,7 @@ vim.opt.ignorecase = true                       -- ignore case in search pattern
 vim.opt.mouse = "a"                             -- allow mouse in neovim
 vim.opt.pumheight = 10                          -- pop up menu height
 vim.opt.showtabline = 2                         -- always shows tabs
-vim.opt.showmode = false                        -- displays 'INSERT' and more  
+vim.opt.showmode = false                        -- displays 'INSERT' and more
 vim.opt.smartcase = true                        -- smart casing
 vim.opt.smartindent = true                      -- smart indentation
 vim.opt.timeoutlen = 1000                       -- time to wait for mapped completion to finish (ms)
@@ -32,19 +32,16 @@ vim.opt.scrolloff = 8                           -- vertical scroll padding
 vim.opt.sidescrolloff = 8                       -- horizontal scroll padding
 vim.opt.termguicolors = true
 vim.opt.shortmess:append("c")
-
+vim.opt.syntax = 'enable'
 vim.opt.list = true
---vim.opt.listchars:append("space:⋅")
 vim.opt.listchars:append("eol:$")
-
-vim.cmd("syntax enable")
-
-vim.cmd("let g:loaded_python_provider = 0")
-vim.cmd("let g:python3_host_prog = '/usr/bin/python3'")
-
-vim.g.loaded_ruby_provider = 0
-vim.g.loaded_perl_provider = 0
+--vim.opt.listchars:append("space:⋅")
 
 vim.keymap.set("", "<Space>", "<Nop>", { noremap = true, silent = true })
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
+vim.g.loaded_python_provider = 0
+vim.g.python3_host_prog = '/usr/bin/python3'
+vim.g.loaded_ruby_provider = 0
+vim.g.loaded_perl_provider = 0
+vim.g.health = { style = 'float' }
