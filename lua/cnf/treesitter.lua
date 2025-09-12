@@ -1,11 +1,7 @@
-local ts_configs = require('nvim-treesitter.configs')
+local ts = require('nvim-treesitter')
 
-ts_configs.setup({
-  ensure_installed = {
-    'c', 'vimdoc', 'rust', 'lua', 'python',
-    'html', 'javascript', 'zig', 'markdown',
-    'markdown_inline', 'java', 'kotlin'
-  },
+ts.setup({
+  install_dir = vim.fn.stdpath('data') .. 'ts',
   sync_install = false,
   ignore_install = {},
   highlight = {
@@ -34,4 +30,10 @@ ts_configs.setup({
     extented_mode = true,
     max_file_lines = nil,
   }
+})
+
+ts.install({
+  'c', 'vimdoc', 'rust', 'lua', 'python',
+  'html', 'javascript', 'zig', 'markdown',
+  'markdown_inline', 'java', 'kotlin'
 })
