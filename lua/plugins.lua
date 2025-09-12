@@ -50,23 +50,22 @@ return {
 
     -- QoL Utils
     {
-        "nvim-treesitter/nvim-treesitter",
+        'nvim-treesitter/nvim-treesitter',
+        branch = 'main',
         lazy = true,
-        event = { "BufReadPost" },
+        event = { 'BufReadPost' },
         cmd = {
             'TSInstall',
             'TSInstallInfo',
             'TSUpdate',
         },
-        build = function()
-            pcall(require('nvim-treesitter.install').update { with_sync = true })
-        end,
+        build = ':TSUpdate',
         dependencies = {
-            "hiphish/rainbow-delimiters.nvim",
-            "RRethy/vim-illuminate",
+            'hiphish/rainbow-delimiters.nvim',
+            'RRethy/vim-illuminate',
         },
         config = function()
-            require("cnf.treesitter")
+            require('cnf.treesitter')
         end
     },
     {
