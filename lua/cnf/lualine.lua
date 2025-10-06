@@ -53,10 +53,14 @@ local branch = {
 -- end
 
 local spaces = function()
-    return "\\t : " .. vim.api.nvim_buf_get_option(0, "shiftwidth")
+    return "\\t : " .. vim.api.nvim_get_option_value(
+        'shiftwidth',
+        { buf = 0 }
+    )
 end
 
-require("lualine").setup({
+---@diagnostic disable-next-line
+require('lualine').setup({
     options = {
         icons_enabled = true,
         theme = 'auto',
