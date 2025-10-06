@@ -170,6 +170,7 @@ return {
                 "L3MON4D3/LuaSnip",
                 lazy = true,
                 dependencies = "rafamadriz/friendly-snippets", -- a bunch of snippets to use
+                build = "make install_jsregexp",
                 config = function() require("cnf.lsp.snip") end
             },
             {
