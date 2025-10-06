@@ -14,11 +14,9 @@ require("trouble").setup({
   warn_no_results = true,
   open_no_results = false,
 
-  ---@type trouble.Window.opts
   win = {},
 
   -- Default definitions for Preview
-  ---@type trouble.Window.opts
   preview = {
     type = "split",
     relative = "win",
@@ -69,7 +67,6 @@ require("trouble").setup({
     zR = "fold_open_all",
   },
 
-  ---@type table<string, trouble.Mode>
   modes = {
     doc_diagnostics = {
       mode = "diagnostics",
