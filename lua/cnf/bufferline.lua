@@ -31,6 +31,14 @@ require("bufferline").setup({
         enforce_regular_tabs = false,
         always_show_bufferline = true,
         sort_by = "insert_after_current",
+        custom_filter = function(bufnr)
+            local buf_type = vim.bo[bufnr].filetype
+            if buf_type == 'qf' then
+                return false
+            end
+
+            return true
+        end
     },
     highlights = {
         fill = {
