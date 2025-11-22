@@ -55,7 +55,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
     keymap('n', '<leader>rn', vlsp.rename, { desc = 'symbol rename' })
     keymap('n', '<leader>a', vlsp.code_action, { desc = 'LSP code action' })
     keymap('n', 'gd', vlsp.definition)
-    keymap('n', '<C-k>', vlsp.signature_help)
+    keymap('n', '<F2>', vlsp.signature_help)
     keymap('n', 'gr', '<cmd>Trouble lsp_references<CR>', {
       desc = 'LSP references list'
     })
