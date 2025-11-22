@@ -210,8 +210,10 @@ return {
                         "MasonLog",
                     },
                 },
-                "neovim/nvim-lspconfig", -- lua integration with native LSP
-                version = "^2"
+                {
+                    "neovim/nvim-lspconfig", -- lua integration with native LSP
+                    version = "^2"
+                }
             },
             "hrsh7th/cmp-nvim-lsp",
         },
