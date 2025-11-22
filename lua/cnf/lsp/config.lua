@@ -15,7 +15,6 @@ require("mason-lspconfig").setup({
   automatic_enable = {
     exclude = {
       "jdtls",
-      "kotlin_language_server"
     }
   }
 })
