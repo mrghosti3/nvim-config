@@ -19,13 +19,12 @@ local function single_or_multi_select(prompt_bufnr)
     end
 end
 
+-- :h telescope.nvim
 telescope.setup({
     defaults = {
         preview = {
             treesitter = false,
         },
-        prompt_prefix = "> ",
-        selection_caret = "> ",
         path_display = {
             shorten = {
                 len = 3,
@@ -95,12 +94,6 @@ telescope.setup({
     },
     pickers = {
         -- Default configuration for builtin pickers goes here:
-        -- picker_name = {
-        --   picker_config_key = value,
-        --   ...
-        -- }
-        -- Now the picker_config_key will be applied every time you call this
-        -- builtin picker
         find_files = {
             theme = "dropdown",
             find_command = { "fd", "-H", "-t", "f", "-E", ".git/" },
@@ -109,15 +102,14 @@ telescope.setup({
             theme = "dropdown",
         },
         git_status = {
-            theme = "dropdown"
+            theme = "dropdown",
+            mappings = {
+                i = {
+                    ["<Tab>"] = actions.add_selection + actions.move_selection_worse,
+                    ["<S-Tab>"] = actions.remove_selection + actions.move_selection_better,
+                }
+            },
         }
-    },
-    extensions = {
-        -- Your extension configuration goes here:
-        -- extension_name = {
-        --   extension_config_key = value,
-        -- }
-        -- please take a look at the readme of the extension you want to configure
     },
 })
 
