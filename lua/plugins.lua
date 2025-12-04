@@ -147,7 +147,7 @@ return {
     },
     {
         "folke/trouble.nvim",
-        version = '^3.7',
+        --[[ version = '^3.7', ]]
         lazy = true,
         cmd = { "Trouble" },
         keys = {
