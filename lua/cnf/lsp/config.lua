@@ -38,7 +38,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
     local vlsp = vim.lsp.buf
     local bufnr = event.buf
 
-    local keymap = function (mode, lhs, rhs, opts)
+    local keymap = function(mode, lhs, rhs, opts)
       opts = opts or {}
       opts.silent = true
       opts.noremap = true
@@ -51,15 +51,31 @@ vim.api.nvim_create_autocmd("LspAttach", {
     keymap('n', '<C-w>d', '', { nowait = true }) -- override to NOP
 
     -- Set new keymaps
-    keymap('n', '<leader>rn', vlsp.rename, { desc = 'symbol rename' })
-    keymap('n', '<leader>a', vlsp.code_action, { desc = 'LSP code action' })
-    keymap('n', 'gd', vlsp.definition)
-    keymap('n', '<F2>', vlsp.signature_help)
-    keymap('n', 'gr', '<cmd>Trouble lsp_references<CR>', {
+    keymap('n', '<leader>rn', function() vlsp.rename() end, {
+      desc = 'LSP symbol rename'
+    })
+
+    keymap('n', '<leader>a', function() vlsp.code_action() end, {
+      desc = 'LSP code quick action'
+    })
+
+    keymap('n', '<F2>', function() vlsp.signature_help() end, {
+      desc = 'LSP show func/method signature'
+    })
+
+    keymap('n', 'gd', function()
+      vlsp.definition({
+        reuse_win = true
+      })
+    end, {
+      desc = 'LSP goto definition'
+    })
+
+    keymap('n', 'grr', function() require('trouble').open('lsp_references') end, {
       desc = 'LSP references list'
     })
 
-    keymap('n', 'K', function ()
+    keymap('n', 'K', function()
       vlsp.hover({
         border = 'single',
         max_height = consts.max_height,
