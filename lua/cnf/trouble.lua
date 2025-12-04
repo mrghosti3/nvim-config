@@ -1,20 +1,6 @@
 require("trouble").setup({
-  auto_close = false,
-  auto_open = false,
-  auto_preview = true,
-  auto_refresh = true,
-  auto_jump = false,
   focus = true,
-  restore = true,
-  follow = true,
-  indent_guides = true,
-  max_items = 200,
-  multiline = true,
-  pinned = false,
-  warn_no_results = true,
-  open_no_results = false,
-
-  win = {},
+  auto_refresh = false,
 
   -- Default definitions for Preview
   preview = {
@@ -22,15 +8,6 @@ require("trouble").setup({
     relative = "win",
     position = "right",
     size = 0.4,
-  },
-
-  ---@type table<string, number|{ms:number, debounce?:boolean}>
-  throttle = {
-    refresh = 20,                            -- fetches new data when needed
-    update = 10,                             -- update window
-    render = 10,                             -- redner window
-    follow = 100,                            -- follow current item
-    preview = { ms = 100, debounce = true }, -- shows preview for current item
   },
 
   keys = { -- key mappings for actions in the trouble list
@@ -74,16 +51,6 @@ require("trouble").setup({
         any = {
           buf = 0,
         }
-      }
-    },
-    lsp_references = {
-      params = {
-        include_declaration = false,
-      }
-    },
-    lsp_base = {
-      params = {
-        include_current = false,
       }
     },
   },
