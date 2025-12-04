@@ -47,6 +47,7 @@ require("trouble").setup({
   modes = {
     doc_diagnostics = {
       mode = "diagnostics",
+      auto_refresh = true,
       filter = {
         any = {
           buf = 0,
