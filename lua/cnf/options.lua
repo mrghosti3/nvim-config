@@ -41,7 +41,7 @@ vim.keymap.set("", "<Space>", "<Nop>", { noremap = true, silent = true })
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 vim.g.loaded_python_provider = 0
-vim.g.python3_host_prog = '/usr/bin/python3'
+vim.g.python3_host_prog = 'python3'
 vim.g.loaded_ruby_provider = 0
 vim.g.loaded_perl_provider = 0
 vim.g.health = { style = 'float' }
