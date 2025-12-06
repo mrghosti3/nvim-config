@@ -33,7 +33,6 @@ ts.setup({
 })
 
 ts.install({
-  'c', 'vimdoc', 'rust', 'lua', 'python',
-  'html', 'javascript', 'zig', 'markdown',
-  'markdown_inline', 'java', 'kotlin'
+  'c', 'vimdoc', 'rust', 'lua', 'python', 'html', 'javascript', 'zig', 'markdown',
+  'markdown_inline', 'java', 'go',
 })
