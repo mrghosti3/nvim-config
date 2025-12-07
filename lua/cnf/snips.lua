@@ -3,7 +3,7 @@ local vscode_snip = require('luasnip.loaders.from_vscode')
 
 local options = {
   history = true,
-  updateevents = "TextChanged,TextChangedI",
+  updateevents = 'TextChanged,TextChangedI',
 }
 
 luasnip.config.set_config(options)
@@ -11,7 +11,7 @@ vscode_snip.lazy_load({
   paths = { vim.g.luasnippets_path or "" }
 })
 
-vim.api.nvim_create_autocmd("InsertLeave", {
+vim.api.nvim_create_autocmd('InsertLeave', {
   callback = function()
     local lsnip = require('luasnip')
     local session = lsnip.session

@@ -162,34 +162,34 @@ return {
 
     -- LSP
     {
-        "hrsh7th/nvim-cmp", -- completion plugin
+        'hrsh7th/nvim-cmp', -- completion plugin
         dependencies = {
             {
-                "L3MON4D3/LuaSnip",
+                'L3MON4D3/LuaSnip',
                 lazy = true,
-                dependencies = "rafamadriz/friendly-snippets", -- a bunch of snippets to use
-                build = "make install_jsregexp",
-                config = function() require("cnf.lsp.snip") end
+                dependencies = 'rafamadriz/friendly-snippets', -- a bunch of snippets to use
+                build = 'make install_jsregexp',
+                config = function() require('cnf.snips') end
             },
             {
-                "windwp/nvim-autopairs", -- Autopairs, integrates with both cmp and treesitter
+                'windwp/nvim-autopairs', -- Autopairs, integrates with both cmp and treesitter
                 lazy = true,
-                event = { "InsertEnter" },
+                event = { 'InsertEnter' },
                 config = function()
-                    require("cnf.lsp.autopairs")
+                    require('cnf.autopairs')
                 end
             },
             {
-                "saadparwaiz1/cmp_luasnip", -- snippet completions
-                "hrsh7th/cmp-nvim-lua",     -- nvim-cmp source for neovim lua API
-                "hrsh7th/cmp-nvim-lsp",     -- nvim-cmp integration with built-in LSP
-                "hrsh7th/cmp-buffer",       -- buffer completions
-                "hrsh7th/cmp-path",         -- path completions
-                "hrsh7th/cmp-cmdline",      -- cmdline completions
+                'saadparwaiz1/cmp_luasnip', -- snippet completions
+                'hrsh7th/cmp-nvim-lua',     -- nvim-cmp source for neovim lua API
+                'hrsh7th/cmp-nvim-lsp',     -- nvim-cmp integration with built-in LSP
+                'hrsh7th/cmp-buffer',       -- buffer completions
+                'hrsh7th/cmp-path',         -- path completions
+                'hrsh7th/cmp-cmdline',      -- cmdline completions
             }
         },
         config = function()
-            require('cnf.lsp.nvim_cmp')
+            require('cnf.nvim_cmp')
         end
     },
     {
