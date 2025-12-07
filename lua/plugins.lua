@@ -1,51 +1,53 @@
 return {
     -- Theme
     {
-        "catppuccin/nvim",
-        name = "catppuccin",
+        'catppuccin/nvim',
+        name = 'catppuccin',
         version = '^1.9',
         priority = 1000,
-        config = function() require("cnf.colorscheme") end
+        config = function() require('cnf.colorscheme') end
     },
     {
-        "NvChad/nvim-colorizer.lua",
-        name = "colorizer",
+        'NvChad/nvim-colorizer.lua',
+        name = 'colorizer',
         commit = '125e4995b86a94405aaf40191738f4b6fcd8ed57',
         dependencies = {
-            "catppuccin"
+            'catppuccin'
         }
     },
 
     -- Extra looks
     {
-        "akinsho/bufferline.nvim", -- Bufferline plugin for displaying opened buffers
+        'akinsho/bufferline.nvim', -- Bufferline plugin for displaying opened buffers
         lazy = false,
-        event = { "BufWinEnter" },
+        event = { 'BufWinEnter' },
         dependencies = {
-            "moll/vim-bbye",
-            "nvim-tree/nvim-web-devicons",
+            'moll/vim-bbye',
+            'nvim-tree/nvim-web-devicons',
         },
-        config = function() require("cnf.bufferline") end
+        config = function() require('cnf.bufferline') end
     },
     {
-        "nvim-lualine/lualine.nvim",
-        event = { "VeryLazy" },
+        'nvim-lualine/lualine.nvim',
+        event = { 'VeryLazy' },
         dependencies = {
-            "nvim-tree/nvim-web-devicons",
+            'nvim-tree/nvim-web-devicons',
         },
-        config = function() require("cnf.lualine") end
+        config = function() require('cnf.lualine') end
     },
     {
-        "lukas-reineke/indent-blankline.nvim", -- Indentation lines
-        version = "^3.9",
-        main = "ibl",
-        config = function() require("cnf.indent-blank") end
+        'lukas-reineke/indent-blankline.nvim', -- Indentation lines
+        version = '^3.9',
+        main = 'ibl',
+        config = function() require('cnf.indent-blank') end
     },
     {
-        "folke/todo-comments.nvim",
-        event = { "VeryLazy" },
-        dependencies = "nvim-lua/plenary.nvim",
-        config = function() require("cnf.todo") end
+        'folke/todo-comments.nvim',
+        event = { 'VeryLazy' },
+        dependencies = {
+            'nvim-lua/plenary.nvim',
+        },
+        config = function() require('cnf.todo') end
     },
 
     -- QoL Utils
@@ -70,94 +72,97 @@ return {
     },
     {
         'nvim-telescope/telescope.nvim',
-        version = "^0.2.0",
-        event = { "VeryLazy", },
+        version = '^0.2.0',
+        event = { 'VeryLazy', },
         dependencies = {
             'nvim-lua/plenary.nvim'
         },
-        config = function() require("cnf.telescope") end
+        config = function() require('cnf.telescope') end
     },
     {
-        "kylechui/nvim-surround", -- Shortcuts for surrounding text with () {} [] "" ''
-        version = "^3.1",
-        event = { "VeryLazy", },
+        -- Shortcuts for surrounding text with () {} [] '' ''
+        'kylechui/nvim-surround',
+        version = '^3.1',
+        event = { 'VeryLazy', },
         opts = {
             keymaps = {
-                insert = "<C-g>s",
-                insert_line = "<C-g>S",
-                normal = "ys",
-                normal_cur = "yss",
-                normal_line = "yS",
-                normal_cur_line = "ySS",
-                visual = "S",
-                visual_line = "gS",
-                delete = "ds",
-                change = "cs",
+                insert = '<C-g>s',
+                insert_line = '<C-g>S',
+                normal = 'ys',
+                normal_cur = 'yss',
+                normal_line = 'yS',
+                normal_cur_line = 'ySS',
+                visual = 'S',
+                visual_line = 'gS',
+                delete = 'ds',
+                change = 'cs',
             },
         },
     },
     {
-        "numToStr/Comment.nvim",
+        'numToStr/Comment.nvim',
         lazy = false,
         config = function()
-            require("cnf.comment")
+            require('cnf.comment')
         end
     }, -- Commenting shortcuts
     {
-        "nmac427/guess-indent.nvim",
-        event = { "VeryLazy" },
+        'nmac427/guess-indent.nvim',
+        event = { 'VeryLazy' },
         opts = {
             auto_cmd = true,
             filetype_exclude = {
-                "tutor",
-                "netrw",
+                'tutor',
+                'netrw',
             },
             buftype_exclude = {
-                "help",
-                "nofile",
-                "terminal",
-                "prompt",
+                'help',
+                'nofile',
+                'terminal',
+                'prompt',
             }
         }
     },
     {
-        "nvim-tree/nvim-tree.lua", -- Plugin for displaying FS tree
+        'nvim-tree/nvim-tree.lua', -- Plugin for displaying FS tree
         lazy = true,
-        event = { "VeryLazy" },
+        event = { 'VeryLazy' },
         cmd = {
-            "NvimTreeToggle",
-            "NvimTreeFocus",
-            "NvimTreeCollapse",
+            'NvimTreeToggle',
+            'NvimTreeFocus',
+            'NvimTreeCollapse',
         },
         keys = {
             {
-                "<leader>e",
-                "<cmd>NvimTreeToggle<cr>",
+                '<leader>e',
+                '<cmd>NvimTreeToggle<cr>',
                 desc = 'NvimTree toggle',
                 noremap = true,
                 silent = true
             }
         },
         dependencies = {
-            "nvim-tree/nvim-web-devicons",
+            'nvim-tree/nvim-web-devicons',
         },
         config = function()
             require('cnf.nvimtree')
         end
     },
     {
-        "folke/trouble.nvim",
+        'folke/trouble.nvim',
         --[[ version = '^3.7', ]]
         lazy = true,
-        cmd = { "Trouble" },
+        cmd = { 'Trouble' },
         keys = {
-            { "<leader>xx", "<cmd>Trouble diagnostics toggle<cr>", },
-            { "<leader>xd", "<cmd>Trouble doc_diagnostics toggle<cr>", },
-            { "<leader>xw", "<cmd>Trouble todo toggle<cr>", },
-            { "<leader>xc", "<cmd>Trouble close toggle<cr>", },
+            { '<leader>xx', '<cmd>Trouble diagnostics toggle<cr>', },
+            { '<leader>xd', '<cmd>Trouble doc_diagnostics toggle<cr>', },
+            { '<leader>xw', '<cmd>Trouble todo toggle<cr>', },
+            { '<leader>xc', '<cmd>Trouble close toggle<cr>', },
         },
-        dependencies = "nvim-lua/plenary.nvim",
-        config = function() require("cnf.trouble") end
+        dependencies = {
+            'nvim-lua/plenary.nvim',
+        },
+        config = function() require('cnf.trouble') end
     },
 
     -- LSP
@@ -193,66 +198,64 @@ return {
         end
     },
     {
-        "mason-org/mason-lspconfig.nvim", -- integration with nvim-lspconfig
-        version = "^2",
+        'mason-org/mason-lspconfig.nvim', -- integration with nvim-lspconfig
+        version = '^2',
         dependencies = {
             {
                 {
-                    "mason-org/mason.nvim", -- enables LSP
+                    'mason-org/mason.nvim', -- enables LSP
                     lazy = true,
-                    version = "^2",
+                    version = '^2',
                     cmd = {
-                        "Mason",
-                        "MasonUpdate",
-                        "MasonInstall",
-                        "MasonUninstall",
-                        "MasonUninstallAll",
-                        "MasonLog",
+                        'Mason',
+                        'MasonUpdate',
+                        'MasonInstall',
+                        'MasonUninstall',
+                        'MasonUninstallAll',
+                        'MasonLog',
                     },
                 },
                 {
-                    "neovim/nvim-lspconfig", -- lua integration with native LSP
-                    version = "^2"
+                    'neovim/nvim-lspconfig', -- lua integration with native LSP
+                    version = '^2'
                 }
             },
-            "hrsh7th/cmp-nvim-lsp",
+            'hrsh7th/cmp-nvim-lsp',
         },
-        config = function() require("cnf.lsp.config") end
+        config = function() require('cnf.lsp.config') end
     },
     {
-        "nvimtools/none-ls.nvim",
-        dependencies = "nvim-lua/plenary.nvim",
+        'nvimtools/none-ls.nvim',
+        dependencies = {
+            'nvim-lua/plenary.nvim',
+        },
         config = function()
-            require("cnf.lsp.null_ls")
+            require('cnf.lsp.null_ls')
         end
     },
     {
-        "hedyhli/outline.nvim",
+        'hedyhli/outline.nvim',
         lazy = true,
-        cmd = "Outline",
+        cmd = 'Outline',
         keys = {
-            { "<leader>st", "<cmd>Outline<cr>" },
-            { "<leader>sf", "<cmd>OutlineFocus<cr>" },
+            { '<leader>st', '<cmd>Outline<cr>' },
+            { '<leader>sf', '<cmd>OutlineFocus<cr>' },
         },
-        config = function() require("cnf.symbols") end
+        config = function() require('cnf.symbols') end
     },
 
     {
-        "lewis6991/gitsigns.nvim", -- Commands and integration for Git
-        version = "^1.0",
+        'lewis6991/gitsigns.nvim', -- Commands and integration for Git
+        version = '^1.0',
         lazy = true,
-        event = { "BufRead" },
+        event = { 'BufRead' },
         config = function()
-            require("cnf.gitsigns")
+            require('cnf.gitsigns')
         end
     },
 
     -- Deps
     {
-        "nvim-lua/plenary.nvim",
-        lazy = true
-    },
-    {
-        "JoosepAlviste/nvim-ts-context-commentstring",
+        'JoosepAlviste/nvim-ts-context-commentstring',
     }
 }
