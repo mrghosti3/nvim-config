@@ -1,9 +1,11 @@
+local bufdel = require('cnf.utils').bufdel
+
 -- check :h bufferline-configuration
 require("bufferline").setup({
     options = {
         numbers = "buffer_id",
-        close_command = "Bdelete %d",
-        right_mouse_command = "Bdelete %d",
+        close_command = bufdel,
+        right_mouse_command = bufdel,
         left_mouse_command = "buffer %d",
         middle_mouse_command = "BufferLineTogglePin",
         indicator = {

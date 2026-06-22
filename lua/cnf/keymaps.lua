@@ -33,7 +33,7 @@ keymap("n", "<S-l>", ":BufferLineCycleNext<CR>", opts)
 keymap("n", "<S-h>", ":BufferLineCyclePrev<CR>", opts)
 keymap("n", "<S-PageUp>", ":BufferLineMovePrev<CR>", opts)
 keymap("n", "<S-PageDown>", ":BufferLineMoveNext<CR>", opts)
-keymap("n", "<S-q>", ":Bdelete %<CR>", opts)
+keymap("n", "<S-q>", require('cnf.utils').bufdel, opts)
 
 -- VISUAL --
 -- Stay in indent mode

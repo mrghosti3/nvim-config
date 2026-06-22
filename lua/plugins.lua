@@ -22,7 +22,6 @@ return {
         lazy = false,
         event = { 'BufWinEnter' },
         dependencies = {
-            'moll/vim-bbye',
             'nvim-tree/nvim-web-devicons',
         },
         config = function() require('cnf.bufferline') end

@@ -1,6 +1,7 @@
 require("cnf.options")
 require("cnf.keymaps")
 require('cnf.diag')
+require('cnf.comm')
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.uv.fs_stat(lazypath) then
