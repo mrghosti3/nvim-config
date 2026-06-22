@@ -7,8 +7,8 @@ return {
       configuration = {
         runtimes = {
           {
-            name = "JavaSE-21",
-            path = "/usr/lib/jvm/java-21/"
+            name = "JavaSE-25",
+            path = "/usr/lib/jvm/jre-openjdk"
           }
         }
       },
