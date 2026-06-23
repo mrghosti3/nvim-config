@@ -103,21 +103,27 @@ return {
         lazy = false,
         opts = {
             pre_hook = function(ctx)
-                local U = require "Comment.utils"
+                local utils = require('Comment.utils')
+                local ts_utils = require('ts_context_commentstring.utils')
+                local calculate_commentstring = require('ts_context_commentstring.internal').calculate_commentstring
 
                 local location = nil
-                if ctx.ctype == U.ctype.block then
-                  location = require("ts_context_commentstring.utils").get_cursor_location()
-                elseif ctx.cmotion == U.cmotion.v or ctx.cmotion == U.cmotion.V then
-                  location = require("ts_context_commentstring.utils").get_visual_start_location()
+                if ctx.ctype == utils.ctype.block then
+                  location = ts_utils.get_cursor_location()
+                elseif ctx.cmotion == utils.cmotion.v or ctx.cmotion == utils.cmotion.V then
+                  location = ts_utils.get_visual_start_location()
                 end
 
-                return require("ts_context_commentstring.internal").calculate_commentstring {
-                  key = ctx.ctype == U.ctype.line and "__default" or "__multiline",
+                return calculate_commentstring {
+                  key = ctx.ctype == utils.ctype.line and "__default" or "__multiline",
                   location = location,
                 }
             end
         },
+
+        dependencies = {
+            'JoosepAlviste/nvim-ts-context-commentstring',
+        }
     }, -- Commenting shortcuts
     {
         'nmac427/guess-indent.nvim',
@@ -266,9 +272,4 @@ return {
             require('cnf.gitsigns')
         end
     },
-
-    -- Deps
-    {
-        'JoosepAlviste/nvim-ts-context-commentstring',
-    }
 }
