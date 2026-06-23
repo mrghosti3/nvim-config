@@ -1,6 +1,19 @@
 local M = {}
 
 --- @param bufs integer[] NVIM bufs
+--- @return integer[]
+local function filter_bufs(bufs)
+    local fbufs = {}
+    for _, b in ipairs(bufs) do
+        if vim.bo[b].buflisted then
+            table.insert(fbufs, b)
+        end
+    end
+
+    return fbufs
+end
+
+--- @param bufs integer[] NVIM bufs
 --- @param current_buf integer current active buf
 --- @return integer? buf id, null on fail
 local function find_next_buf(bufs, current_buf)
@@ -34,18 +47,17 @@ function M.bufdel(bufn, force)
         return
     end
 
-    if vim.bo[bufn].modified and force then
-        vim.bo[bufn].bufhidden = "hide"
-    end
-
     --- Additional actions for safe buffer deletion without changing window layout
     for _, win in ipairs(vim.api.nvim_list_wins()) do
         if vim.api.nvim_win_get_buf(win) ~= bufn then goto continue end
 
         vim.api.nvim_win_call(win, function()
-            --- Returns -1 when only 1 buf is left or other buf wasn't opened
-            --- The 2nd case mostly happens when launched: `nvim FILE1 FILE2`
-            local alt_bufn = find_next_buf(vim.api.nvim_list_bufs(), bufn)
+            local alt_bufn = find_next_buf(
+                -- raw buf list contains unlisted bufs, which when switched to
+                -- will open an empty window
+                filter_bufs(vim.api.nvim_list_bufs()),
+                bufn
+            )
 
             if alt_bufn == nil or vim.fn.buflisted(alt_bufn) == 0 then
                 --- Did not find alternative buf, therefore new buf must be created
@@ -65,10 +77,7 @@ function M.bufdel(bufn, force)
         ::continue::
     end
 
-    --[[ vim.api.nvim_buf_delete(bufn, { force = force }) ]]
-    if vim.fn.buflisted(bufn) == 1 and bufn ~= vim.api.nvim_get_current_buf() then
-        vim.api.nvim_buf_delete(bufn, { force = true })
-    end
+    vim.api.nvim_buf_delete(bufn, { force = force })
 end
 
 return M
