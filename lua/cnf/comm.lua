@@ -1,5 +1,3 @@
-
-
 vim.api.nvim_create_user_command(
     "Bdelete",
     function(opts)
@@ -7,10 +5,11 @@ vim.api.nvim_create_user_command(
         local buf = nil
         if #args > 1 then
             vim.notify(
-                'Too many arguments: ' .. opts.nargs,
+                'Bdelete: too many arguments: expected 1, found ' .. #args,
                 vim.log.levels.ERROR,
                 {}
             )
+            return
         elseif #args == 1 then
             buf = vim.fn.bufnr(args[1], false)
         end
@@ -18,7 +17,7 @@ vim.api.nvim_create_user_command(
         require('cnf.utils').bufdel(buf, opts.bang)
     end,
     {
-        nargs = '?',
+        nargs = '*',
         bang = true,
         complete = 'buffer',
         desc = 'Delete buffer without closing window'
